@@ -1,0 +1,74 @@
+<!-- Crear una función JavaScript. Realizar la validación de datos de alquiler de vehículos en JavaScript:
+ código=alfanumérico de 5 caracteres,
+  marca=alfanumérico de 50 caracteres,
+   modelo=alfanumérico de 30 caracteres,
+    año=numérico de 4 dígitos, 
+    fecha inicial=tipo date, 
+    fecha final=tipo date).
+     La fecha de final debe ser mayor a la fecha inicial. Poner el código en la respuesta Y enviar el enlace de GitLab al correo instituciona -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Examen APPWEB</title>
+</head>
+
+<body>
+    
+    
+        <form id="formulario"  method="get" onsubmit="return valida(this)">
+                <p>Codigo: <input type="text" id="codigo" /></p>
+                <p>Marca: <input type="text" id="marca" /></p>
+                <p>Modelo: <input type="text" id="modelo" /></p>
+                <p>Año: <input type="number" id="año" /></p>
+                <p>Fecha Inicial: <input type="date" id="inicial" /></p>
+                <p>Fecha Final: <input type="date" id="final" /></p>
+                <p><input type="submit" value="Enviar" /></p>
+        </form>
+
+        <script type="text/javascript"> 
+            function valida(f) {
+            var T = true;
+            var alerta = "Error: \n";
+
+            if(f.elements[0].value == "" || f.elements[0].value.length > 5)
+            {
+                alerta += "- El código tiene que ser de 5 caracteres\n";
+                T = false;
+            }
+            if(f.elements[1].value == "" || f.elements[1].value.length > 100)
+            {
+                alerta += "- Marca maximo 50 caracteres\n";
+                T = false;
+            }
+            if(f.elements[2].value == "" || f.elements[2].value.length>60)
+            {
+                alerta += "- Modelo maximo 30 caracteres\n";
+                T = false;
+            }
+            if(f.elements[3].value == "" || f.elements[3].value.length>4)
+            {
+                alerta += "- Año maximo 4 digitos\n";
+                T = false;
+            }
+
+            if(f.elements[4].date == "" || f.elements[4].value > f.elements[5].value)            {
+                alerta += "- La fecha Inicial debe ser Mayor que la final\n";
+                T = false; 
+            }
+
+            if(f.elements[5].date == "" || f.elements[5].value < f.elements[4].value)            {
+                alerta += "- La fecha Final debe ser Menor que la fina\n";
+                T = false; 
+            }
+            if(T == false)
+            alert(alerta);
+            else
+                alert("todo Correcto")
+            return T;
+            }
+        </script>
+    
+
+    </body>
+</html>
